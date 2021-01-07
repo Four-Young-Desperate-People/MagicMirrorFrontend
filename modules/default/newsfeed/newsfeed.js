@@ -413,5 +413,5 @@ Module.register("newsfeed", {
 		this.timer = null;
 		Log.info(this.name + " - showing " + this.isShowingDescription ? "article description" : "full article");
 		this.updateDom(100);
-	}
+	}truetrue
 });

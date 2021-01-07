@@ -9,8 +9,6 @@ module.exports = NodeHelper.create({
 	start: function() {
 		this.config = null
 		this.pooler = []
-		this.foo = "GLDS";
-		Log.log("FOOGALOOO: " + this.foo)
 
 		var ros = new ROSLIB.Ros({
 			url : 'ws://localhost:9090'
@@ -38,7 +36,8 @@ module.exports = NodeHelper.create({
 	},
 
 	rosCallback: function(message) {
-		this.sendSocketNotification("GIF_CHANGE", message.data);
 		Log.log('Received message on ' + listener.name + ': ' + message.data);
+		Log.log('Test' + JSON.parse(message.data));
+		this.sendSocketNotification("GIF_CHANGE", message.data);
 	},
 })
