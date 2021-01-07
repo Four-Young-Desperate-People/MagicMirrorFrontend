@@ -8,15 +8,15 @@ Module.register("compliments", {
 	// Module config defaults.
 	defaults: {
 		compliments: {
-			anytime: ["Hey there sexy!"],
-			morning: ["Good morning, handsome!", "Enjoy your day!", "How was your sleep?"],
-			afternoon: ["Hello, beauty!", "You look sexy!", "Looking good today!"],
-			evening: ["Wow, you look hot!", "You look nice!", "Hi, sexy!"],
+			anytime: ["Hey there oh educated one!"],
+			morning: ["Good morning, professor!", "Enjoy your day!", "How was your sleep?"],
+			afternoon: ["Hello, professor!", "You look educated!", "Looking educated today!"],
+			evening: ["Wow, you look educated!", "You look nice!", "Hi, educated one!"],
 			"....-01-01": ["Happy new year!"]
 		},
-		updateInterval: 30000,
+		updateInterval: 3000,
 		remoteFile: null,
-		fadeSpeed: 4000,
+		fadeSpeed: 500,
 		morningStartTime: 3,
 		morningEndTime: 12,
 		afternoonStartTime: 12,
@@ -36,6 +36,8 @@ Module.register("compliments", {
 	// Define start sequence.
 	start: function () {
 		Log.info("Starting module: " + this.name);
+		Log.error("FOOOOGALOOO")
+		Log.log("FOOOOGALOOO2")
 
 		this.lastComplimentIndex = -1;
 
