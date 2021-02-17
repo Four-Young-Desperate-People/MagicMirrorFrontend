@@ -28,8 +28,8 @@ module.exports = NodeHelper.create({
 
 		listener = new ROSLIB.Topic({
 			ros: ros,
-			name: "/update_hr_display",
-			messageType: "std_msgs/String"
+			name: "/display_heartrate",
+			messageType: "std_msgs/Int32"
 		});
 
 		listener.subscribe(this.rosCallback.bind(this));
@@ -37,6 +37,6 @@ module.exports = NodeHelper.create({
 
 	rosCallback: function (message) {
 		Log.log("Received message on " + listener.name + ": " + message.data);
-		this.sendSocketNotification("GIF_CHANGE", message.data);
+		this.sendSocketNotification("DISPLAY HR", message.data);
 	}
 });

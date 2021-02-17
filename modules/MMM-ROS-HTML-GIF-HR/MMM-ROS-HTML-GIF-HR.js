@@ -4,10 +4,9 @@
  * By Shlimslam
  */
 
-Module.register("MMM-ROS-HTML-GIF", {
+Module.register("MMM-ROS-HTML-GIF-HR", {
 	defaults: {
-		gifUrl: "flower.gif",
-		gifUrlNum: "1"
+		hr: 1
 	},
 
 	start: function () {
@@ -16,15 +15,15 @@ Module.register("MMM-ROS-HTML-GIF", {
 		this.sendSocketNotification("INIT", null);
 
 		// Schedule update timer.
-		this.scheduleUpdate(100);
+		this.scheduleUpdate(300);
 	},
 
 	// Override socket notification handler.
 	socketNotificationReceived: function (notification, payload) {
 		let self = this;
 
-		if (notification === "GIF_CHANGE") {
-			this.config.gifUrlNum = payload;
+		if (notification === "DISPLAY HR") {
+			this.config.hr = int(payload);
 		}
 	},
 
@@ -42,10 +41,24 @@ Module.register("MMM-ROS-HTML-GIF", {
 
 	getDom: function () {
 		let self = this;
+
+		let gifName;
+		if (self.config.hr <= 96) {
+			gifName = "flower1.gif";
+		} else if (self.config.hr <= 122) {
+			gifName = "flower2.gif";
+		} else if (self.config.hr <= 148) {
+			gifName = "flower3.gif";
+		} else if (self.config.hr <= 174) {
+			gifName = "flower4.gif";
+		} else {
+			gifName = "flower5.gif";
+		}
+
 		var wrapper = document.createElement("div");
 		wrapper.className = self.config.classes ? self.config.classes : "thin xlarge bright pre-line";
-		wrapper.id = "MMM-ROS-HTML-GIF";
-		wrapper.className = "MMM-ROS-HTML-GIF module";
+		wrapper.id = "MMM-ROS-HTML-GIF-HR";
+		wrapper.className = "MMM-ROS-HTML-GIF-HR module";
 		wrapper.style.width = self.config.width;
 		wrapper.style.height = self.config.height;
 		wrapper.style.border = "none";
@@ -54,16 +67,20 @@ Module.register("MMM-ROS-HTML-GIF", {
 		wrapper.style.backgroundColor = self.config.backgroundColor;
 		wrapper.scrolling = "no";
 
-		let goo = document.createElement("img");
-		goo.src = "modules/MMM-ROS-HTML-GIF/flower" + self.config.gifUrlNum + ".gif";
+		let gifElement = document.createElement("img");
+		gifElement.src = "modules/MMM-ROS-HTML-GIF/" + gifName;
 
-		wrapper.appendChild(goo);
+		let hrElement = document.createElement("h3");
+		hrElement.innerText = document.createTextNode(String(self.config.hr));
+
+		wrapper.appendChild(gifElement);
+		wrapper.appendChild(hrElement);
 
 		return wrapper;
 	},
 
 	suspend: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF");
+		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-HR");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "none";
@@ -72,7 +89,7 @@ Module.register("MMM-ROS-HTML-GIF", {
 	},
 
 	resume: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF");
+		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-HR");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "block";

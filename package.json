@@ -88,7 +88,8 @@
 		"rrule-alt": "^2.2.8",
 		"simple-git": "^1.85.0",
 		"socket.io": "^2.3.0",
-		"valid-url": "^1.0.9"
+		"valid-url": "^1.0.9",
+		"ws": "^7.4.3"
 	},
 	"_moduleAliases": {
 		"node_helper": "js/node_helper.js"

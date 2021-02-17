@@ -28,7 +28,7 @@ module.exports = NodeHelper.create({
 
 		listener = new ROSLIB.Topic({
 			ros: ros,
-			name: "/display_exercise",
+			name: "/display_text",
 			messageType: "std_msgs/String"
 		});
 
@@ -37,6 +37,6 @@ module.exports = NodeHelper.create({
 
 	rosCallback: function (message) {
 		Log.log("Received message on " + listener.name + ": " + message.data);
-		this.sendSocketNotification("GIF_CHANGE", message.data);
+		this.sendSocketNotification("DISPLAY TEXT", message.data);
 	}
 });
