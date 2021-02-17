@@ -1,10 +1,10 @@
 /* Magic Mirror
- * Module: MMM-ROS-HTML-GIF
+ * Module: MMM-HTML-GIF-HR
  *
  * By Shlimslam
  */
 
-Module.register("MMM-ROS-HTML-GIF-HR", {
+Module.register("MMM-HTML-GIF-HR", {
 	defaults: {
 		hr: 1
 	},
@@ -16,6 +16,12 @@ Module.register("MMM-ROS-HTML-GIF-HR", {
 
 		// Schedule update timer.
 		this.scheduleUpdate(300);
+	},
+
+	notificationReceived: function (notification, payload) {
+		if (notification === "CHANGE_HR") {
+			this.config.hr = int(payload);
+		}
 	},
 
 	// Override socket notification handler.
@@ -57,8 +63,8 @@ Module.register("MMM-ROS-HTML-GIF-HR", {
 
 		var wrapper = document.createElement("div");
 		wrapper.className = self.config.classes ? self.config.classes : "thin xlarge bright pre-line";
-		wrapper.id = "MMM-ROS-HTML-GIF-HR";
-		wrapper.className = "MMM-ROS-HTML-GIF-HR module";
+		wrapper.id = "MMM-HTML-GIF-HR";
+		wrapper.className = "MMM-HTML-GIF-HR module";
 		wrapper.style.width = self.config.width;
 		wrapper.style.height = self.config.height;
 		wrapper.style.border = "none";
@@ -68,7 +74,7 @@ Module.register("MMM-ROS-HTML-GIF-HR", {
 		wrapper.scrolling = "no";
 
 		let gifElement = document.createElement("img");
-		gifElement.src = "modules/MMM-ROS-HTML-GIF/" + gifName;
+		gifElement.src = "modules/MMM-HTML-GIF-HR/" + gifName;
 
 		let hrElement = document.createElement("h3");
 		hrElement.innerText = document.createTextNode(String(self.config.hr));
@@ -80,7 +86,7 @@ Module.register("MMM-ROS-HTML-GIF-HR", {
 	},
 
 	suspend: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-HR");
+		var doms = document.getElementsByClassName("MMM-HTML-GIF-HR");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "none";
@@ -89,7 +95,7 @@ Module.register("MMM-ROS-HTML-GIF-HR", {
 	},
 
 	resume: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-HR");
+		var doms = document.getElementsByClassName("MMM-HTML-GIF-HR");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "block";
