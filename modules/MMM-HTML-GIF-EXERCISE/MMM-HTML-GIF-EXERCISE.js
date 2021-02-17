@@ -1,10 +1,10 @@
 /* Magic Mirror
- * Module: MMM-WS-HTML-GIF-EXERCISE
+ * Module: MMM-HTML-GIF-EXERCISE
  *
  * By Shlimslam
  */
 
-Module.register("MMM-WS-HTML-GIF-EXERCISE", {
+Module.register("MMM-HTML-GIF-EXERCISE", {
 	defaults: {
 		updateInterval: 10,
 		gif: "quick_feet.gif"
@@ -41,8 +41,8 @@ Module.register("MMM-WS-HTML-GIF-EXERCISE", {
 		let self = this;
 		var wrapper = document.createElement("div");
 		wrapper.className = self.config.classes ? self.config.classes : "thin xlarge bright pre-line";
-		wrapper.id = "MMM-WS-HTML-GIF-EXERCISE";
-		wrapper.className = "MMM-WS-HTML-GIF-EXERCISE module";
+		wrapper.id = "MMM-HTML-GIF-EXERCISE";
+		wrapper.className = "MMM-HTML-GIF-EXERCISE module";
 		wrapper.style.width = self.config.width;
 		wrapper.style.height = self.config.height;
 		wrapper.style.border = "none";
@@ -52,7 +52,7 @@ Module.register("MMM-WS-HTML-GIF-EXERCISE", {
 		wrapper.scrolling = "no";
 
 		let gifElement = document.createElement("img");
-		gifElement.src = "modules/MMM-WS-HTML-GIF-EXERCISE/" + this.config.gif;
+		gifElement.src = "modules/MMM-HTML-GIF-EXERCISE/" + this.config.gif;
 
 		wrapper.appendChild(gifElement);
 
@@ -60,7 +60,7 @@ Module.register("MMM-WS-HTML-GIF-EXERCISE", {
 	},
 
 	suspend: function () {
-		var doms = document.getElementsByClassName("MMM-WS-HTML-GIF-EXERCISE");
+		var doms = document.getElementsByClassName("MMM-HTML-GIF-EXERCISE");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "none";
@@ -69,7 +69,7 @@ Module.register("MMM-WS-HTML-GIF-EXERCISE", {
 	},
 
 	resume: function () {
-		var doms = document.getElementsByClassName("MMM-WS-HTML-GIF-EXERCISE");
+		var doms = document.getElementsByClassName("MMM-HTML-GIF-EXERCISE");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "block";
