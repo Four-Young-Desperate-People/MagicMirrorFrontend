@@ -1,10 +1,10 @@
 /* Magic Mirror
- * Module: MMM-ROS-HTML-GIF
+ * Module: MMM-WS-HTML-GIF-EXERCISE
  *
  * By Shlimslam
  */
 
-Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
+Module.register("MMM-WS-HTML-GIF-EXERCISE", {
 	defaults: {
 		updateInterval: 10,
 		gif: "quick_feet.gif"
@@ -25,13 +25,6 @@ Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
 		this.scheduleUpdate(10);
 	},
 
-	// Override socket notification handler.
-	socketNotificationReceived: function (notification, payload) {
-		if (notification === "DISPLAY GIF") {
-			this.config.gif = payload;
-		}
-	},
-
 	scheduleUpdate: function (delay) {
 		let self = this;
 		let nextLoad = self.config.updateInterval;
@@ -48,8 +41,8 @@ Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
 		let self = this;
 		var wrapper = document.createElement("div");
 		wrapper.className = self.config.classes ? self.config.classes : "thin xlarge bright pre-line";
-		wrapper.id = "MMM-ROS-HTML-GIF-EXERCISE";
-		wrapper.className = "MMM-ROS-HTML-GIF-EXERCISE module";
+		wrapper.id = "MMM-WS-HTML-GIF-EXERCISE";
+		wrapper.className = "MMM-WS-HTML-GIF-EXERCISE module";
 		wrapper.style.width = self.config.width;
 		wrapper.style.height = self.config.height;
 		wrapper.style.border = "none";
@@ -59,7 +52,7 @@ Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
 		wrapper.scrolling = "no";
 
 		let gifElement = document.createElement("img");
-		gifElement.src = "modules/MMM-ROS-HTML-GIF-EXERCISE/" + this.config.gif;
+		gifElement.src = "modules/MMM-WS-HTML-GIF-EXERCISE/" + this.config.gif;
 
 		wrapper.appendChild(gifElement);
 
@@ -67,7 +60,7 @@ Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
 	},
 
 	suspend: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-EXERCISE");
+		var doms = document.getElementsByClassName("MMM-WS-HTML-GIF-EXERCISE");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "none";
@@ -76,7 +69,7 @@ Module.register("MMM-ROS-HTML-GIF-EXERCISE", {
 	},
 
 	resume: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-HTML-GIF-EXERCISE");
+		var doms = document.getElementsByClassName("MMM-WS-HTML-GIF-EXERCISE");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "block";
