@@ -1,10 +1,10 @@
 /* Magic Mirror
- * Module: MMM-ROS-H1
+ * Module: MMM-H1
  *
  * By Shlimslam
  */
 
-Module.register("MMM-ROS-H1", {
+Module.register("MMM-H1", {
 	defaults: {
 		text: ""
 	},
@@ -18,12 +18,9 @@ Module.register("MMM-ROS-H1", {
 		this.scheduleUpdate(300);
 	},
 
-	// Override socket notification handler.
-	socketNotificationReceived: function (notification, payload) {
-		let self = this;
-
-		if (notification === "DISPLAY TEXT") {
-			this.config.hr = int(payload);
+	notificationReceived: function (notification, payload) {
+		if (notification === "CHANGE_TEXT") {
+			this.config.text = payload;
 		}
 	},
 
@@ -43,8 +40,8 @@ Module.register("MMM-ROS-H1", {
 		let self = this;
 		var wrapper = document.createElement("div");
 		wrapper.className = self.config.classes ? self.config.classes : "thin xlarge bright pre-line";
-		wrapper.id = "MMM-ROS-H1";
-		wrapper.className = "MMM-ROS-H1 module";
+		wrapper.id = "MMM-H1";
+		wrapper.className = "MMM-H1 module";
 		wrapper.style.width = self.config.width;
 		wrapper.style.height = self.config.height;
 		wrapper.style.border = "none";
@@ -62,7 +59,7 @@ Module.register("MMM-ROS-H1", {
 	},
 
 	suspend: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-H1");
+		var doms = document.getElementsByClassName("MMM-H1");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "none";
@@ -71,7 +68,7 @@ Module.register("MMM-ROS-H1", {
 	},
 
 	resume: function () {
-		var doms = document.getElementsByClassName("MMM-ROS-H1");
+		var doms = document.getElementsByClassName("MMM-H1");
 		if (doms.length > 0) {
 			for (let dom of doms) {
 				dom.style.display = "block";
