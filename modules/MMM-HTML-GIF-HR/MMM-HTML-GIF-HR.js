@@ -15,21 +15,12 @@ Module.register("MMM-HTML-GIF-HR", {
 		this.sendSocketNotification("INIT", null);
 
 		// Schedule update timer.
-		this.scheduleUpdate(300);
+		this.scheduleUpdate(50);
 	},
 
 	notificationReceived: function (notification, payload) {
 		if (notification === "CHANGE_HR") {
-			this.config.hr = int(payload);
-		}
-	},
-
-	// Override socket notification handler.
-	socketNotificationReceived: function (notification, payload) {
-		let self = this;
-
-		if (notification === "DISPLAY HR") {
-			this.config.hr = int(payload);
+			this.config.hr = payload;
 		}
 	},
 
@@ -77,8 +68,7 @@ Module.register("MMM-HTML-GIF-HR", {
 		gifElement.src = "modules/MMM-HTML-GIF-HR/" + gifName;
 
 		let hrElement = document.createElement("h3");
-		hrElement.innerText = document.createTextNode(String(self.config.hr));
-
+		hrElement.innerText = String(self.config.hr);
 		wrapper.appendChild(gifElement);
 		wrapper.appendChild(hrElement);
 

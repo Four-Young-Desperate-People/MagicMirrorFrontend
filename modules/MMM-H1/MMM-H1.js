@@ -6,7 +6,8 @@
 
 Module.register("MMM-H1", {
 	defaults: {
-		text: ""
+		text: "BELUGAA WHALES",
+		updateInterval: 50
 	},
 
 	start: function () {
@@ -15,12 +16,12 @@ Module.register("MMM-H1", {
 		this.sendSocketNotification("INIT", null);
 
 		// Schedule update timer.
-		this.scheduleUpdate(300);
+		this.scheduleUpdate(50);
 	},
 
 	notificationReceived: function (notification, payload) {
 		if (notification === "CHANGE_TEXT") {
-			this.config.text = payload;
+			this.config.text = String(payload);
 		}
 	},
 
@@ -50,8 +51,8 @@ Module.register("MMM-H1", {
 		wrapper.style.backgroundColor = self.config.backgroundColor;
 		wrapper.scrolling = "no";
 
-		let textElement = document.createElement("h1");
-		textElement.innerText = document.createTextNode(String(self.config.text));
+		let textElement = document.createElement("H1");
+		textElement.innerText = String(self.config.text);
 
 		wrapper.appendChild(textElement);
 
