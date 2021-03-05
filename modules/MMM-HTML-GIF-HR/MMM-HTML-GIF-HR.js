@@ -15,7 +15,7 @@ Module.register("MMM-HTML-GIF-HR", {
 		this.sendSocketNotification("INIT", null);
 
 		// Schedule update timer.
-		this.scheduleUpdate(50);
+		this.scheduleUpdate(1000);
 	},
 
 	notificationReceived: function (notification, payload) {
@@ -40,16 +40,18 @@ Module.register("MMM-HTML-GIF-HR", {
 		let self = this;
 
 		let gifName;
-		if (self.config.hr <= 96) {
-			gifName = "flower1.gif";
-		} else if (self.config.hr <= 122) {
-			gifName = "flower2.gif";
-		} else if (self.config.hr <= 148) {
-			gifName = "flower3.gif";
-		} else if (self.config.hr <= 174) {
-			gifName = "flower4.gif";
+		if (self.config.hr <= 60) {
+			gifName = "heartbeat_10.gif";
+		} else if (self.config.hr <= 80) {
+			gifName = "heartbeat_20.gif";
+		} else if (self.config.hr <= 110) {
+			gifName = "heartbeat_30.gif";
+		} else if (self.config.hr <= 140) {
+			gifName = "heartbeat_40.gif";
+		} else if (self.config.hr <= 165) {
+			gifName = "heartbeat_50.gif";
 		} else {
-			gifName = "flower5.gif";
+			gifName = "heartbeat_60.gif";
 		}
 
 		var wrapper = document.createElement("div");
@@ -66,6 +68,8 @@ Module.register("MMM-HTML-GIF-HR", {
 
 		let gifElement = document.createElement("img");
 		gifElement.src = "modules/MMM-HTML-GIF-HR/" + gifName;
+		gifElement.style.width = 50;
+		gifElement.style.width = 50;
 
 		let hrElement = document.createElement("h3");
 		hrElement.innerText = String(self.config.hr);
