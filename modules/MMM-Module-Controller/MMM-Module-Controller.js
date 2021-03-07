@@ -14,10 +14,6 @@ Module.register("MMM-Module-Controller", {
 		mostRecentCommands: [],
 
 		regular_mode_modules: {
-			calendar: {
-				visible: "false",
-				position: "top_left"
-			},
 			compliments: {
 				visible: "false",
 				position: "top_center"
@@ -53,10 +49,6 @@ Module.register("MMM-Module-Controller", {
 		},
 
 		alarm_mode_modules: {
-			calendar: {
-				visible: "false",
-				position: "top_left"
-			},
 			compliments: {
 				visible: "false",
 				position: "top_center"
