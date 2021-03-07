@@ -95,7 +95,7 @@ Module.register("MMM-Module-Controller", {
 				this.config.currentWeatherLoaded = true;
 
 				if (this.config.weatherForecastLoaded) {
-					bothLoadedAndAccounted = true;
+					this.config.bothLoadedAndAccounted = true;
 					if (this.config.mostRecentCommands.length !== 0) {
 						for (i = 0; i <= this.config.mostRecentCommands.length; i++) {
 							modules_cur = this.config.mostRecentCommands.shift();
@@ -109,7 +109,7 @@ Module.register("MMM-Module-Controller", {
 				this.config.weatherForecastLoaded = true;
 
 				if (this.config.currentWeatherLoaded) {
-					bothLoadedAndAccounted = true;
+					this.config.bothLoadedAndAccounted = true;
 					if (this.config.mostRecentCommands.length !== 0) {
 						for (i = 0; i <= this.config.mostRecentCommands.length; i++) {
 							modules_cur = this.config.mostRecentCommands.shift();
