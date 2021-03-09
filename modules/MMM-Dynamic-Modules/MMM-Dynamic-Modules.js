@@ -1,7 +1,45 @@
 Module.register("MMM-Dynamic-Modules",{
+	defaults: {
+		clear_screen: {
+			compliments: {
+				visible: "false",
+				position: "top_center"
+			},
+			clock: {
+				visible: "false",
+				position: "top_right"
+			},
+			currentweather: {
+				visible: "false",
+				position: "bottom_left"
+			},
+			weatherforecast: {
+				visible: "false",
+				position: "bottom_right"
+			},
+			newsfeed: {
+				visible: "false",
+				position: "middle_center"
+			},
+			"MMM-H1": {
+				visible: "false",
+				position: "middle_center"
+			},
+			"MMM-HTML-GIF-EXERCISE": {
+				visible: "false",
+				position: "middle_center"
+			},
+			"MMM-HTML-GIF-HR": {
+				visible: "false",
+				position: "top_right"
+			}
+		}
+	},
+
 
     notificationReceived: function(notification, payload){
         if(notification === 'CHANGE_POSITIONS'){
+			this.setPositions(this.config.clear_screen);
             this.setPositions(payload);
         }
 
