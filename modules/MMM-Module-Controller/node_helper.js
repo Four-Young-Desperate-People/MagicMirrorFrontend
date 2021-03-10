@@ -50,6 +50,10 @@ module.exports = NodeHelper.create({
 						notificationName = "CHANGE_HEARTRATE";
 						break;
 
+					case "heartrate_not_high_enough":
+						notificationName = "HEARTRATE_NOT_HIGH_ENOUGH";
+						break;
+
 					case "stop_alarm":
 						notificationName = "STOP_ALARM";
 						break;

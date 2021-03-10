@@ -9,10 +9,6 @@ Module.register("MMM-Module-Controller", {
 		updateInterval: 10,
 		alarmMode: false,
 		regular_mode_modules: {
-			calendar: {
-				visible: "false",
-				position: "top_left"
-			},
 			compliments: {
 				visible: "false",
 				position: "top_center"
@@ -48,10 +44,6 @@ Module.register("MMM-Module-Controller", {
 		},
 
 		alarm_mode_modules: {
-			calendar: {
-				visible: "false",
-				position: "top_left"
-			},
 			compliments: {
 				visible: "false",
 				position: "top_center"
@@ -120,6 +112,11 @@ Module.register("MMM-Module-Controller", {
 		} else if (notification === "CHANGE_HEARTRATE") {
 			this.sendNotification("CHANGE_HR", payload);
 			this.sendNotification("CHANGE_TEXT", "HR is being measured");
+		} else if (notification === "HEARTRATE_NOT_HIGH_ENOUGH") {
+			this.config.alarm_mode_modules["MMM-HTML-GIF-EXERCISE"]["visible"] = "false";
+			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "true";
+			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "false";
+			this.sendNotification("CHANGE_TEXT", "HR was not high enough");
 		} else if (notification === "STOP_ALARM") {
 			this.config.alarmMode = false;
 			this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
