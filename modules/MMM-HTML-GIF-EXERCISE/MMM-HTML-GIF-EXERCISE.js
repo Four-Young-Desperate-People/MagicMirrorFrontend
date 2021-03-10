@@ -7,7 +7,7 @@
 Module.register("MMM-HTML-GIF-EXERCISE", {
 	defaults: {
 		updateInterval: 10,
-		gif: "quick_feet.gif"
+		gif: "squats.gif"
 	},
 
 	notificationReceived: function (notification, payload) {

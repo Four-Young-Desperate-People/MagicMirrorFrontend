@@ -6,7 +6,7 @@
 
 Module.register("MMM-H1", {
 	defaults: {
-		text: "BELUGAA WHALES",
+		text: "",
 		updateInterval: 50
 	},
 
