@@ -39,58 +39,58 @@ var config = {
 
 	modules: [
 		/* DEFAULT VISUAL MODULES (so they exist and can be controlled by ROS topics) */
-		// {
-		// 	module: "compliments",
-		// 	position: "top_center"
-		// },
-		// {
-		// 	module: "clock",
-		// 	position: "top_right"
-		// },
-		// {
-		// 	module: "currentweather",
-		// 	position: "bottom_left",
-		// 	config: {
-		// 		locationID: 6176823,
-		// 		appid: '433c1272eb9c32c3d643a7ff4f142b21'
-		// 	}
-		// },
-		// {
-		// 	module: "weatherforecast",
-		// 	position: "bottom_right",
-		// 	config: {
-		// 		locationID: 6176823,
-		// 		appid: '433c1272eb9c32c3d643a7ff4f142b21'
-		// 	}
-		// },
-		// {
-		// 	module: "newsfeed",
-		// 	position: "middle_center"
-		// },
+		{
+			module: "compliments",
+			position: "top_center"
+		},
+		{
+			module: "clock",
+			position: "top_right"
+		},
+		{
+			module: "currentweather",
+			position: "bottom_left",
+			config: {
+				locationID: 6176823,
+				appid: '433c1272eb9c32c3d643a7ff4f142b21'
+			}
+		},
+		{
+			module: "weatherforecast",
+			position: "bottom_right",
+			config: {
+				locationID: 6176823,
+				appid: '433c1272eb9c32c3d643a7ff4f142b21'
+			}
+		},
+		{
+			module: "newsfeed",
+			position: "middle_center"
+		},
 
 
-		// /* CONTROLLER MODULES */
-		// {
-		// 	module: "MMM-Dynamic-Modules",
-		// },
-		// {
-		// 	module: "MMM-Module-Controller",
-		// },
+		/* CONTROLLER MODULES */
+		{
+			module: "MMM-Dynamic-Modules",
+		},
+		{
+			module: "MMM-Module-Controller",
+		},
 
 		
-		// /* CUSTOM MODULES (most are hooked to ros topics) */
+		/* CUSTOM MODULES (most are hooked to ros topics) */
 		{
 			module: "MMM-HTML-GIF-EXERCISE",
 			position: "middle_center"
 		},
-		// {
-		// 	module: "MMM-HTML-GIF-HR",
-		// 	position: "top_right"
-		// },
-		// {
-		// 	module: "MMM-H1",
-		// 	position: "middle_center"
-		// },
+		{
+			module: "MMM-HTML-GIF-HR",
+			position: "top_right"
+		},
+		{
+			module: "MMM-H1",
+			position: "middle_center"
+		},
 	]
 };
 
