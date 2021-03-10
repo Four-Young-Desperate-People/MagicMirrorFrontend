@@ -116,6 +116,7 @@ Module.register("MMM-Module-Controller", {
 			this.config.alarm_mode_modules["MMM-HTML-GIF-EXERCISE"]["visible"] = "false";
 			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "true";
 			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "false";
+			this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			this.sendNotification("CHANGE_TEXT", "HR was not high enough");
 		} else if (notification === "STOP_ALARM") {
 			this.config.alarmMode = false;
