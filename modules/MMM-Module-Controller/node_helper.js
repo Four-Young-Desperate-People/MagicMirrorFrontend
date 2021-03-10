@@ -11,7 +11,7 @@ module.exports = NodeHelper.create({
 
 		var self = this;
 
-		let ws = new WebSocket("ws://localhost:8765");
+		let ws = new WebSocket("ws://localhost:3683/frontend");
 
 		ws.on("open", function open() {
 			Log.log("Socket is Opened");
