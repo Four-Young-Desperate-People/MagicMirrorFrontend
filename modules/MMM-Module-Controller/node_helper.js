@@ -11,7 +11,7 @@ module.exports = NodeHelper.create({
 
 		var self = this;
 
-		let ws = new WebSocket("ws://localhost:8765");
+		let ws = new WebSocket("ws://localhost:3683/frontend");
 
 		ws.on("open", function open() {
 			Log.log("Socket is Opened");
@@ -27,37 +27,31 @@ module.exports = NodeHelper.create({
 				Log.log("CONTROLLER: socket message has no data");
 			} else {
 				let notificationName = "";
-				let payload = null;
+				let payload = msg.data;
 
 				switch (msg.method) {
 					case "update_modules_display":
 						notificationName = "MODULE_CHANGE";
-						payload = msg.data.modules;
 						break;
 
 					case "display_exercise":
 						notificationName = "DISPLAY_EXERCISE";
-						payload = msg.data.gif;
 						break;
 
 					case "display_text":
 						notificationName = "DISPLAY_TEXT";
-						payload = msg.data.text;
 						break;
 
 					case "start_displaying_heartrate":
 						notificationName = "START_DISPLAY_HEARTRATE";
-						payload = msg.data.hr;
 						break;
 
 					case "change_heartrate":
 						notificationName = "CHANGE_HEARTRATE";
-						payload = msg.data.hr;
 						break;
 
 					case "stop_alarm":
 						notificationName = "STOP_ALARM";
-						payload = "";
 						break;
 
 					default:
