@@ -11,7 +11,7 @@ Module.register("MMM-Module-Controller", {
 		currentWeatherLoaded: false,
 		weatherForecastLoaded: false,
 		bothLoadedAndAccounted: false,
-		mostRecentCommands: [],
+		mostRecentCommand: null,
 		regular_mode_modules: {
 			compliments: {
 				visible: "false",
@@ -95,13 +95,8 @@ Module.register("MMM-Module-Controller", {
 
 				if (this.config.weatherForecastLoaded) {
 					this.config.bothLoadedAndAccounted = true;
-					if (this.config.mostRecentCommands.length !== 0) {
-						for (i = 0; i <= this.config.mostRecentCommands.length; i++) {
-							modules_cur = this.config.mostRecentCommands.shift();
-							this.sendNotification("CHANGE_POSITIONS", (modules = modules_cur));
-						}
-					} else {
-						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
+					if (this.config.mostRecentCommand != null) {
+						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
 					}
 				}
 			} else if (notification === "WEATHER_FORECAST_LOADED") {
@@ -109,13 +104,8 @@ Module.register("MMM-Module-Controller", {
 
 				if (this.config.currentWeatherLoaded) {
 					this.config.bothLoadedAndAccounted = true;
-					if (this.config.mostRecentCommands.length !== 0) {
-						for (i = 0; i <= this.config.mostRecentCommands.length; i++) {
-							modules_cur = this.config.mostRecentCommands.shift();
-							this.sendNotification("CHANGE_POSITIONS", (modules = modules_cur));
-						}
-					} else {
-						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
+					if (this.config.mostRecentCommand != null) {
+						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
 					}
 				}
 			}
@@ -129,7 +119,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 		} else if (notification === "DISPLAY_EXERCISE") {
 			this.config.alarmMode = true;
@@ -140,7 +130,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 
 			this.sendNotification("CHANGE_GIF", payload);
@@ -152,7 +142,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 
 			this.sendNotification("CHANGE_TEXT", payload);
@@ -164,7 +154,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 
 			this.sendNotification("CHANGE_HR", payload);
@@ -180,7 +170,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 
 			this.sendNotification("CHANGE_TEXT", "HR was not high enough");
@@ -190,7 +180,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(payload);
+				this.config.mostRecentCommand = payload;
 			}
 
 			this.config.alarm_mode_modules["MMM-HTML-GIF-EXERCISE"]["visible"] = "false";
