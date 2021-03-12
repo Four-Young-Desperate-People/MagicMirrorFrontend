@@ -94,11 +94,7 @@ Module.register("MMM-Module-Controller", {
 		if (!this.config.weatherForecastLoaded) {
 			if (notification === "WEATHER_FORECAST_LOADED") {
 				this.config.weatherForecastLoaded = true;
-				if (payload != null) {
-					this.sendNotification("CHANGE_POSITIONS", (modules = payload));
-				} else {
-					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
-				}
+				this.sendNotification("CHANGE_POSITIONS", (modules = payload));
 			}
 		}
 	},
