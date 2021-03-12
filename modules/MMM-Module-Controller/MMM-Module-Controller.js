@@ -92,11 +92,11 @@ Module.register("MMM-Module-Controller", {
 		let self = this;
 		if (!self.config.weatherForecastLoaded) {
 			if (notification === "WEATHER_FORECAST_LOADED") {
-				this.config.weatherForecastLoaded = true;
+				self.config.weatherForecastLoaded = true;
 				if (self.config.mostRecentCommand != null) {
-					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
+					self.sendNotification("CHANGE_POSITIONS", (modules = self.config.mostRecentCommand));
 				} else {
-					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
+					self.sendNotification("CHANGE_POSITIONS", (modules = self.config.regular_mode_modules));
 				}
 			}
 		}
@@ -104,12 +104,13 @@ Module.register("MMM-Module-Controller", {
 
 	// Override socket notification handler.
 	socketNotificationReceived: function (notification, payload) {
-		if (notification === "MODULE_CHANGE" && this.config.alarmMode === false) {
-			this.config.regular_mode_modules = payload;
-			if (this.config.weatherForecastLoaded) {
-				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
+		let self = this;
+		if (notification === "MODULE_CHANGE" && self.config.alarmMode === false) {
+			self.config.regular_mode_modules = payload;
+			if (self.config.weatherForecastLoaded) {
+				self.sendNotification("CHANGE_POSITIONS", (modules = self.config.regular_mode_modules));
 			} else {
-				this.config.mostRecentCommand = payload;
+				self.config.mostRecentCommand = payload;
 			}
 		} else if (notification === "DISPLAY_EXERCISE") {
 			this.config.alarmMode = true;
