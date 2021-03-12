@@ -49,41 +49,6 @@ Module.register("MMM-Module-Controller", {
 			}
 		},
 
-		regular_mode_modules_test: {
-			compliments: {
-				visible: "true",
-				position: "top_center"
-			},
-			clock: {
-				visible: "true",
-				position: "top_right"
-			},
-			currentweather: {
-				visible: "false",
-				position: "bottom_left"
-			},
-			weatherforecast: {
-				visible: "false",
-				position: "bottom_right"
-			},
-			newsfeed: {
-				visible: "false",
-				position: "middle_center"
-			},
-			"MMM-H1": {
-				visible: "false",
-				position: "middle_center"
-			},
-			"MMM-HTML-GIF-EXERCISE": {
-				visible: "false",
-				position: "middle_center"
-			},
-			"MMM-HTML-GIF-HR": {
-				visible: "false",
-				position: "top_right"
-			}
-		},
-
 		alarm_mode_modules: {
 			compliments: {
 				visible: "false",
@@ -132,7 +97,7 @@ Module.register("MMM-Module-Controller", {
 				if (payload != null) {
 					this.sendNotification("CHANGE_POSITIONS", (modules = payload));
 				} else {
-					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules_test));
+					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 				}
 			}
 		}
