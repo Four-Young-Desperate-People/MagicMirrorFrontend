@@ -89,11 +89,14 @@ Module.register("MMM-Module-Controller", {
 	},
 
 	notificationReceived: function (notification, payload) {
-		if (!this.config.weatherForecastLoaded) {
+		let self = this;
+		if (!self.config.weatherForecastLoaded) {
 			if (notification === "WEATHER_FORECAST_LOADED") {
 				this.config.weatherForecastLoaded = true;
-				if (this.config.mostRecentCommand != null) {
+				if (self.config.mostRecentCommand != null) {
 					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
+				} else {
+					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 				}
 			}
 		}
