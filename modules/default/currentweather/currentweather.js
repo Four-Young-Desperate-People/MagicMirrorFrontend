@@ -504,7 +504,7 @@ Module.register("currentweather", {
 
 		if (!this.config.initialLoad) {
 			this.config.initialLoad = true;
-			this.sendNotification("WEATHER_FORECAST_LOADED", true);
+			this.sendNotification("CURRENT_WEATHER_LOADED", true);
 		}
 	},
 
