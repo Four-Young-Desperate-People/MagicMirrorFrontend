@@ -129,7 +129,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.regular_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 		} else if (notification === "DISPLAY_EXERCISE") {
 			this.config.alarmMode = true;
@@ -140,7 +140,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.alarm_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 
 			this.sendNotification("CHANGE_GIF", payload);
@@ -152,7 +152,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.alarm_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 
 			this.sendNotification("CHANGE_TEXT", payload);
@@ -164,7 +164,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.alarm_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 
 			this.sendNotification("CHANGE_HR", payload);
@@ -180,7 +180,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.alarm_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 
 			this.sendNotification("CHANGE_TEXT", "HR was not high enough");
@@ -190,7 +190,7 @@ Module.register("MMM-Module-Controller", {
 			if (this.config.bothLoadedAndAccounted) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
-				this.config.mostRecentCommands.push(this.config.regular_mode_modules);
+				this.config.mostRecentCommands.push(payload);
 			}
 
 			this.config.alarm_mode_modules["MMM-HTML-GIF-EXERCISE"]["visible"] = "false";
