@@ -16,11 +16,11 @@ Module.register("MMM-Module-Controller", {
 		mostRecentCommand: null,
 		regular_mode_modules: {
 			compliments: {
-				visible: "false",
+				visible: "true",
 				position: "top_center"
 			},
 			clock: {
-				visible: "false",
+				visible: "true",
 				position: "top_right"
 			},
 			currentweather: {
