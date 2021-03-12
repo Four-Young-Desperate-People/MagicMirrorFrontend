@@ -5,6 +5,8 @@
  */
 
 Module.register("MMM-Module-Controller", {
+	foo: null,
+
 	defaults: {
 		updateInterval: 10,
 		alarmMode: false,
@@ -89,14 +91,13 @@ Module.register("MMM-Module-Controller", {
 	},
 
 	notificationReceived: function (notification, payload) {
-		let self = this;
-		if (!self.config.weatherForecastLoaded) {
+		if (!this.config.weatherForecastLoaded) {
 			if (notification === "WEATHER_FORECAST_LOADED") {
-				self.config.weatherForecastLoaded = true;
-				if (self.config.mostRecentCommand != null) {
-					self.sendNotification("CHANGE_POSITIONS", (modules = self.config.mostRecentCommand));
+				this.config.weatherForecastLoaded = true;
+				if (this.foo != null) {
+					this.sendNotification("CHANGE_POSITIONS", (modules = this.foo));
 				} else {
-					self.sendNotification("CHANGE_POSITIONS", (modules = self.config.regular_mode_modules));
+					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 				}
 			}
 		}
@@ -104,13 +105,12 @@ Module.register("MMM-Module-Controller", {
 
 	// Override socket notification handler.
 	socketNotificationReceived: function (notification, payload) {
-		let self = this;
-		if (notification === "MODULE_CHANGE" && self.config.alarmMode === false) {
-			self.config.regular_mode_modules = payload;
-			if (self.config.weatherForecastLoaded) {
-				self.sendNotification("CHANGE_POSITIONS", (modules = self.config.regular_mode_modules));
+		if (notification === "MODULE_CHANGE" && this.config.alarmMode === false) {
+			this.config.regular_mode_modules = payload;
+			if (this.config.weatherForecastLoaded) {
+				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
-				self.config.mostRecentCommand = payload;
+				this.foo = payload;
 			}
 		} else if (notification === "DISPLAY_EXERCISE") {
 			this.config.alarmMode = true;
