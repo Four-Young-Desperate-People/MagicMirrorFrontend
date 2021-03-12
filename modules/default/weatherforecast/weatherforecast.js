@@ -58,7 +58,8 @@ Module.register("weatherforecast", {
 			"11n": "wi-night-thunderstorm",
 			"13n": "wi-night-snow",
 			"50n": "wi-night-alt-cloudy-windy"
-		}
+		},
+		initialLoad: false
 	},
 
 	// create a variable for the first upcoming calendar event. Used if no location is specified.
@@ -411,6 +412,11 @@ Module.register("weatherforecast", {
 		this.show(this.config.animationSpeed, { lockString: this.identifier });
 		this.loaded = true;
 		this.updateDom(this.config.animationSpeed);
+
+		if (!this.config.initialLoad) {
+			this.config.initialLoad = true;
+			this.sendNotification("WEATHER_FORECAST_LOADED", true);
+		}
 	},
 
 	/* scheduleUpdate()
