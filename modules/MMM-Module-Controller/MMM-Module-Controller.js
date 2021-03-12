@@ -89,24 +89,11 @@ Module.register("MMM-Module-Controller", {
 	},
 
 	notificationReceived: function (notification, payload) {
-		if (!this.config.bothLoadedAndAccounted) {
-			if (notification === "CURRENT_WEATHER_LOADED") {
-				this.config.currentWeatherLoaded = true;
-
-				if (this.config.weatherForecastLoaded) {
-					this.config.bothLoadedAndAccounted = true;
-					if (this.config.mostRecentCommand != null) {
-						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
-					}
-				}
-			} else if (notification === "WEATHER_FORECAST_LOADED") {
+		if (!this.config.weatherForecastLoaded) {
+			if (notification === "WEATHER_FORECAST_LOADED") {
 				this.config.weatherForecastLoaded = true;
-
-				if (this.config.currentWeatherLoaded) {
-					this.config.bothLoadedAndAccounted = true;
-					if (this.config.mostRecentCommand != null) {
-						this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
-					}
+				if (this.config.mostRecentCommand != null) {
+					this.sendNotification("CHANGE_POSITIONS", (modules = this.config.mostRecentCommand));
 				}
 			}
 		}
@@ -116,7 +103,7 @@ Module.register("MMM-Module-Controller", {
 	socketNotificationReceived: function (notification, payload) {
 		if (notification === "MODULE_CHANGE" && this.config.alarmMode === false) {
 			this.config.regular_mode_modules = payload;
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
@@ -127,7 +114,7 @@ Module.register("MMM-Module-Controller", {
 			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "false";
 			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "false";
 
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
@@ -139,7 +126,7 @@ Module.register("MMM-Module-Controller", {
 			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "true";
 			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "false";
 
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
@@ -151,7 +138,7 @@ Module.register("MMM-Module-Controller", {
 			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "true";
 			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "true";
 
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
@@ -167,7 +154,7 @@ Module.register("MMM-Module-Controller", {
 			this.config.alarm_mode_modules["MMM-H1"]["visible"] = "true";
 			this.config.alarm_mode_modules["MMM-HTML-GIF-HR"]["visible"] = "false";
 
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.alarm_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
@@ -177,7 +164,7 @@ Module.register("MMM-Module-Controller", {
 		} else if (notification === "STOP_ALARM") {
 			this.config.alarmMode = false;
 
-			if (this.config.bothLoadedAndAccounted) {
+			if (this.config.weatherForecastLoaded) {
 				this.sendNotification("CHANGE_POSITIONS", (modules = this.config.regular_mode_modules));
 			} else {
 				this.config.mostRecentCommand = payload;
