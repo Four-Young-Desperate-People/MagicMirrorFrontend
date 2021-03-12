@@ -59,7 +59,8 @@ Module.register("weatherforecast", {
 			"13n": "wi-night-snow",
 			"50n": "wi-night-alt-cloudy-windy"
 		},
-		initialLoad: false
+		initialLoad: false,
+		command: null
 	},
 
 	// create a variable for the first upcoming calendar event. Used if no location is specified.
@@ -415,7 +416,13 @@ Module.register("weatherforecast", {
 
 		if (!this.config.initialLoad) {
 			this.config.initialLoad = true;
-			this.sendNotification("WEATHER_FORECAST_LOADED", true);
+			this.sendNotification("WEATHER_FORECAST_LOADED", this.config.command);
+		}
+	},
+
+	notificationReceived: function (notification, payload) {
+		if (notification === "OOGABOOGA") {
+			this.config.command = payload;
 		}
 	},
 
