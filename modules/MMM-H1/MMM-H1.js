@@ -1,7 +1,7 @@
 /* Magic Mirror
  * Module: MMM-H1
  *
- * By Shlimslam
+ * By Shlimshlam
  */
 
 Module.register("MMM-H1", {

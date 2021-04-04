@@ -1,7 +1,7 @@
 /* Magic Mirror
  * Module: MMM-HTML-GIF-HR
  *
- * By Shlimslam
+ * By Shlimshlam
  */
 
 Module.register("MMM-HTML-GIF-HR", {
